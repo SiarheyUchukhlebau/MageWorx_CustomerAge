@@ -1,0 +1,17 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+<!-- The scope from default.xml layout: <item name="mwCustomerAttributes" xsi:type="array"> -->
+<div id="age-container" data-bind="scope: 'mwCustomerAttributes'" data-role="customer-age-container">
+    <!-- ko if: (customerAttributes().age) -->
+    <div class="mw-customer-attributes-container">
+        <p><?= __('Customer age is ');?><span data-bind="html: customerAttributes().age"></span></p>
+    </div>
+    <!-- /ko -->
+    <!-- ko ifnot: (customerAttributes().age) -->
+    <p><?= __('The customer did not indicate the age');?></p>
+    <!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+        {"#age-container": {"Magento_Ui/js/core/app": <?php echo $block->getJsLayout();?>}}
+    </script>

@@ -1,0 +1,22 @@
+{
+    "name": "mageworx/module-customer-age",
+    "description": "Adds customer age attribute to any page (including the cached pages)",
+    "require": {
+        "magento/framework": ">=102",
+        "magento/module-customer": ">=102"
+    },
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MageWorx\\CustomerAge\\": ""
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Add customer attributes data model to source map (private data provider) -->
+    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+        <arguments>
+            <argument name="sectionSourceMap" xsi:type="array">
+                <!-- The 'mw-customer-attributes' is key for our data on frontend. The `CustomerAttributes` class will provide data from server. -->
+                <item name="mw-customer-attributes" xsi:type="string">MageWorx\CustomerAge\CustomerData\CustomerAttributes</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
