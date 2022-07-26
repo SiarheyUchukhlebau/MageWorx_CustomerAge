@@ -1,18 +1,20 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="before.body.end">
-            <block class="Magento\Framework\View\Element\Template" name="mw_customer_attributes.age" template="MageWorx_CustomerAge::customer_attributes.phtml">
-                <arguments>
-                    <argument name="jsLayout" xsi:type="array">
-                        <item name="components" xsi:type="array">
-                            <item name="mwCustomerAttributes" xsi:type="array">
-                                <item name="component" xsi:type="string">MageWorx_CustomerAge/js/view/customer-attributes</item>
+        <referenceContainer name="header-wrapper">
+            <container name="customer-attributes-wrapper" after="top.search" htmlTag="div" htmlClass="compare wrapper">
+                <block class="Magento\Framework\View\Element\Template" name="mw_customer_attributes.age" template="MageWorx_CustomerAge::customer_attributes.phtml">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="mwCustomerAttributes" xsi:type="array">
+                                    <item name="component" xsi:type="string">MageWorx_CustomerAge/js/view/customer-attributes</item>
+                                </item>
                             </item>
-                        </item>
-                    </argument>
-                </arguments>
-            </block>
+                        </argument>
+                    </arguments>
+                </block>
+            </container>
         </referenceContainer>
     </body>
 </page>
