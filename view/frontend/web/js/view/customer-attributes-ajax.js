@@ -12,6 +12,7 @@ define([
 
     return Component.extend({
 
+        // Property which will be displayed as example in the template
         observableProperties: [
             'age'
         ],
@@ -24,6 +25,11 @@ define([
             this.initData();
         },
 
+        /**
+         * Make age observable
+         *
+         * @returns {*}
+         */
         initObservable: function () {
             this._super();
             this.observe(this.observableProperties);
@@ -31,6 +37,11 @@ define([
             return this;
         },
 
+        /**
+         * Make isVisible computed, based on the age value
+         *
+         * @returns {*}
+         */
         initSubscribers: function () {
             this.isVisible = ko.computed(function () {
                 return Boolean(this.age());
@@ -39,6 +50,9 @@ define([
             return this;
         },
 
+        /**
+         * Call for controller on the page load and set data to the component's property: age
+         */
         initData: function () {
             let data = this.getData();
 
@@ -51,6 +65,11 @@ define([
             console.log(data);
         },
 
+        /**
+         * Receive data from controller. Hardcoded.
+         *
+         * @returns {{}}
+         */
         getData: function() {
             let url = window.BASE_URL + "mageworx_customer_age/index/detectAge",
                 result = {};
@@ -76,6 +95,10 @@ define([
 
         },
 
+        /**
+         * Get current product id from component's configuration. @see \MageWorx\CustomerAge\ViewModel\AgeJs
+         * @returns {*}
+         */
         getProductId: function () {
             return this.productId;
         }
