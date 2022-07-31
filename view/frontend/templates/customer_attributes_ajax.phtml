@@ -6,6 +6,7 @@ $viewModel = $block->getData('viewModel');
 ?>
 <!-- The scope from default.xml layout: <item name="mwCustomerAttributesAjax" xsi:type="array"> -->
 <div id="age-container-ajax" data-bind="scope: 'mwCustomerAttributesAjax'" data-role="customer-age-ajax-container">
+    <!-- Tag is invisible by default, but will be shown using component logic -->
     <p data-bind="visible: isVisible" style="display: none;"><?= __('Age is ');?><span data-bind="html: age"></span></p>
 </div>
 <script type="text/x-magento-init">
