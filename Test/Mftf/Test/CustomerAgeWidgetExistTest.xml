@@ -1,0 +1,21 @@
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="CustomerAgeWidgetExistTest">
+        <annotations>
+            <features value="Customer Age Widget"/>
+            <stories value="Display customer age block on storefront"/>
+            <title value="Customer age widget must be visible on any page"/>
+            <description value="You should be able to see widget on any page."/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="#MWX_CA_0001"/>
+            <group value="customerAgeMain"/>
+        </annotations>
+        <actionGroup stepKey="DetectCustomerAgeBlockOnHomePage" ref="StorefrontOpenMainPageActionGroup" />
+        <seeElement selector="{{StorefrontCustomerAgeSection.customerAge}}" stepKey="verifyCustomerAgeBlock"/>
+        <grabTextFrom selector="{{StorefrontCustomerAgeSection.customerAgeMessage}}" stepKey="grabCustomerAgeText"/>
+        <assertEquals stepKey="verifyCustomerAgeBlockEmpty">
+            <actualResult type="variable">grabCustomerAgeText</actualResult>
+            <expectedResult type="string">The customer did not indicate the age</expectedResult>
+        </assertEquals>
+    </test>
+</tests>

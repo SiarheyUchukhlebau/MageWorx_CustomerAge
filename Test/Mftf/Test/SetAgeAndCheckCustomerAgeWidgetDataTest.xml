@@ -1,0 +1,25 @@
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="SetAgeAndCheckCustomerAgeWidgetDataTest">
+        <annotations>
+            <features value="Customer Age Widget"/>
+            <stories value="Display customer age block on storefront and display correct age for registered customer"/>
+            <title value="Customer age widget must be visible on any page and has correct data for logged in customer with defined age"/>
+            <description value="You should be able to see widget with correct age data."/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="#MWX_CA_0002"/>
+            <group value="customerAgeMain"/>
+        </annotations>
+        <actionGroup stepKey="OpenHomePage" ref="StorefrontOpenMainPageActionGroup" />
+        <!-- Check widget exist with empty data message -->
+        <seeElement selector="{{StorefrontCustomerAgeSection.customerAge}}" stepKey="verifyCustomerAgeBlock"/>
+        <grabTextFrom selector="{{StorefrontCustomerAgeSection.customerAgeMessage}}" stepKey="grabCustomerAgeText"/>
+        <assertEquals stepKey="verifyCustomerAgeBlockEmpty">
+            <actualResult type="variable">grabCustomerAgeText</actualResult>
+            <expectedResult type="string">The customer did not indicate the age</expectedResult>
+        </assertEquals>
+        <!-- Create customer with age -->
+        <!-- Check data in the widget similar with entered by a customer -->
+        <actionGroup ref="CreateCustomerWithAgeActionGroup" stepKey="createCustomerWithAge"/>
+    </test>
+</tests>

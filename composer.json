@@ -3,7 +3,8 @@
     "description": "Adds customer age attribute to any page (including the cached pages)",
     "require": {
         "magento/framework": ">=102",
-        "magento/module-customer": ">=102"
+        "magento/module-customer": ">=102",
+        "ext-json": "*"
     },
     "version": "1.0.0",
     "type": "magento2-module",

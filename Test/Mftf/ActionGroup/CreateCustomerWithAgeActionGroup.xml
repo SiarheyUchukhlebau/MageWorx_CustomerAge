@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="CreateCustomerWithAgeActionGroup">
+        <annotations>
+            <description>Goes to the Storefront. Clicks on 'Create Account'. Fills in the provided Customer details, including Age. Clicks on 'Create Account' button. Validate that the Customer details are present and correct.</description>
+        </annotations>
+        <arguments>
+            <argument name="Customer" defaultValue="MageWorxCustomerWithAge"/>
+        </arguments>
+
+        <amOnPage url="{{StorefrontHomePage.url}}" stepKey="amOnStorefrontPage"/>
+        <waitForElementVisible selector="{{StorefrontPanelHeaderSection.createAnAccountLink}}" stepKey="waitForCreateAccountLink"/>
+        <click stepKey="clickOnCreateAccountLink" selector="{{StorefrontPanelHeaderSection.createAnAccountLink}}"/>
+        <fillField  stepKey="fillFirstName" userInput="{{Customer.firstname}}" selector="{{StorefrontCustomerCreateFormSection.firstnameField}}"/>
+        <fillField  stepKey="fillLastName" userInput="{{Customer.lastname}}" selector="{{StorefrontCustomerCreateFormSection.lastnameField}}"/>
+        <fillField  stepKey="fillEmail" userInput="{{Customer.email}}" selector="{{StorefrontCustomerCreateFormSection.emailField}}"/>
+        <fillField  stepKey="fillPassword" userInput="{{Customer.password}}" selector="{{StorefrontCustomerCreateFormSection.passwordField}}"/>
+        <fillField  stepKey="fillConfirmPassword" userInput="{{Customer.password}}" selector="{{StorefrontCustomerCreateFormSection.confirmPasswordField}}"/>
+        <!-- Fill age -->
+        <fillField  stepKey="fillAge" userInput="{{Customer.age}}" selector="{{StorefrontCustomerAgeSection.customerAgeField}}"/>
+        <waitForPageLoad stepKey="waitForCreateAccountButtonIsActive"/>
+        <click stepKey="clickCreateAccountButton" selector="{{StorefrontCustomerCreateFormSection.createAccountButton}}"/>
+        <see stepKey="seeThankYouMessage" userInput="Thank you for registering"/>
+        <see stepKey="seeFirstName" userInput="{{Customer.firstname}}" selector="{{StorefrontCustomerDashboardAccountInformationSection.ContactInformation}}"/>
+        <see stepKey="seeLastName" userInput="{{Customer.lastname}}" selector="{{StorefrontCustomerDashboardAccountInformationSection.ContactInformation}}"/>
+        <see stepKey="seeEmail" userInput="{{Customer.email}}" selector="{{StorefrontCustomerDashboardAccountInformationSection.ContactInformation}}"/>
+        <see stepKey="seeAge" userInput="{{Customer.age}}" selector="{{StorefrontCustomerAgeSection.customerAgeMessageAge}}"/>
+    </actionGroup>
+</actionGroups>

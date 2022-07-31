@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /**
+  * Copyright © Magento, Inc. All rights reserved.
+  * See COPYING.txt for license details.
+  */
+-->
+
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
+    <section name="StorefrontCustomerAgeSection">
+        <element name="customerAge" type="block" selector="#age-container" />
+        <element name="customerAgeMessage" type="block" selector="#age-container p" />
+        <element name="customerAgeField" type="block" selector="#age" />
+        <element name="customerAgeMessageAge" type="block" selector="#age-container p span" />
+    </section>
+</sections>
