@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx, Inc. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.extrahint">
+            <block class="Magento\Framework\View\Element\Template" name="mw_customer_attributes.age.ajax" template="MageWorx_CustomerAge::customer_attributes_ajax.phtml">
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">MageWorx\CustomerAge\ViewModel\AgeJs</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

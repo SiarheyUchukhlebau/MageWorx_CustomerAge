@@ -1,0 +1,28 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \MageWorx\CustomerAge\ViewModel\AgeJs $viewModel */
+$viewModel = $block->getData('viewModel');
+?>
+<!-- The scope from default.xml layout: <item name="mwCustomerAttributesAjax" xsi:type="array"> -->
+<div id="age-container-ajax" data-bind="scope: 'mwCustomerAttributesAjax'" data-role="customer-age-ajax-container">
+    <p data-bind="visible: isVisible" style="display: none;"><?= __('Age is ');?><span data-bind="html: age"></span></p>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#age-container-ajax":
+        {
+            "Magento_Ui/js/core/app": {
+                "components" : {
+                    "mwCustomerAttributesAjax": {
+                        "component": "MageWorx_CustomerAge/js/view/customer-attributes-ajax",
+                        "config": {
+                            "storeCode": "<?= $escaper->escapeJs($viewModel->getStoreCode())?>",
+                            "productId": "<?= $escaper->escapeJs($viewModel->getCurrentProductId())?>"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
